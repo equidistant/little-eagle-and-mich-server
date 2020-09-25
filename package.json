@@ -1,0 +1,40 @@
+{
+  "name": "little-eagle-and-mich-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec npm run babel-node -- ./src/index.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s --copy-files",
+    "build": "npm run clean && npm run build-babel",
+    "start-production": "NODE_ENV=production node -r dotenv/config ./build/index.js",
+    "run-production": "npm run build && npm run start-production",
+    "babel-node": "babel-node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "7.8.7",
+    "@babel/runtime": "7.9.2",
+    "bcryptjs": "2.4.3",
+    "body-parser": "1.19.0",
+    "cookie-parser": "1.4.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "image-size": "0.9.1",
+    "mongoose": "5.9.19",
+    "nodemon": "2.0.2",
+    "promisify": "0.0.3",
+    "swr": "0.3.2",
+    "uuid": "7.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.8.7",
+    "@babel/node": "7.8.7",
+    "@babel/plugin-transform-runtime": "7.9.0",
+    "@babel/preset-env": "7.8.7"
+  }
+}

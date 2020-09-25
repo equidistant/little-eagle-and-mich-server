@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "little-eagle-and-mich-server",
+            "script": "npm",
+            "args" : "run run-production"
+        }
+    ]
+}
