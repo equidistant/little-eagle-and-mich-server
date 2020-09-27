@@ -17,7 +17,7 @@ router.post('/',
 
 router.use(setResponseHeadersWeb)
 
-router.get('/:title?',
+router.get('/',
 	postController.get,
 	postResponder.get
 )
