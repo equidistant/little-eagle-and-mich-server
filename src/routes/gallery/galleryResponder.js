@@ -10,7 +10,7 @@ export const create = async (req, res, next) => {
 
 export const get = async (req, res, next) => {
 	try {
-		return res.status(200).send(req.gallery)
+		return res.status(200).send(req.galleries)
 	} catch (err) {
 		return next(err)
 	}

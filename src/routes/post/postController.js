@@ -2,8 +2,8 @@ import * as postRepository from './postRepository'
 
 export const create = async (req, res, next) => {
 	try {
-		const { title, longTitle, description, tags, coverImg, nodes } = req.body
-		req.post = await postRepository.create({ title, longTitle, description, tags, coverImg, nodes })
+		
+		req.post = await postRepository.create(req.body)
 		return next()
 	} catch (err) {
 		return next(err)

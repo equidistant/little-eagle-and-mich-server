@@ -8,8 +8,23 @@ const gallerySchema = new Schema({
   longTitle: {
     type: String
   },
+  description: {
+    type: String
+  },
+  tags: {
+    type: [String]
+  },
+  coverImg: {
+    type: String
+  },
   low: [],
-  high: []
+  high: [],
+  created: {
+    type: Number,
+    default: () => {
+      return Date.now()
+    }
+  },
 })
 
 export default mongoose.model('Gallery', gallerySchema)

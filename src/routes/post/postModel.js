@@ -17,6 +17,9 @@ const postSchema = new Schema({
   coverImg: {
     type: String
   },
+  gallery: { 
+    type: String
+  },
   created: {
     type: Number,
     default: () => {

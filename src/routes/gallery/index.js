@@ -17,12 +17,7 @@ router.post('/',
 
 router.use(setResponseHeadersWeb)
 
-router.get('/titles',
-	galleryController.getTitles,
-	galleryResponder.get
-)
-
-router.get('/:title?',
+router.get('/',
 	galleryController.get,
 	galleryResponder.get
 )

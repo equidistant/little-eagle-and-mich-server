@@ -6,42 +6,21 @@ export const create = (data) => {
 	return gallery.save()
 }
 
-export const getByTitle = (title) => {
-	return Gallery.findOne({
-		title
+export const get = (query) => {
+	let queries = []
+	if (query.title) {
+		queries.push({ 
+			$match: { 
+				title: query.title
+			}
+		})
+	}
+	if (query.tags) {
+		queries.push({ $match: { tags: { $all: query.tags.split(',') } } })
+	}
+	queries.push({ $sort: { created: -1 } })
+	queries.push({
+		$project: { _id: 0, title: 1, longTitle: 1, tags: 1, coverImg: 1, description: 1, low: 1, high: 1}
 	})
-}
-
-export const getAll = ({ page, nPerPage = 10 }) => {
-	// const skip = page * nPerPage
-	// return Post.find({}).skip(skip).limit(nPerPage)
-	const match = {
-		$match: {}
-	}
-	const sort = {
-		$sort: {
-		  'title': 1
-		}
-	}
-	return Gallery.aggregate([match, sort])
-}
-
-export const getAllTitles = ({ page, nPerPage = 10 }) => {
-	// const skip = page * nPerPage
-	// return Post.find({}).skip(skip).limit(nPerPage)
-	const match = {
-		$match: {}
-	}
-	const sort = {
-		$sort: {
-		  'title': 1
-		}
-	}
-	const project = {
-		$project: {
-			title: 1,
-			_id: 0
-		}
-	  }
-	return Gallery.aggregate([match, sort, project])
+	return Gallery.aggregate(queries)
 }
