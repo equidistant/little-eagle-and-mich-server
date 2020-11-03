@@ -40,7 +40,7 @@ export const get = (query) => {
 	}
 	queries.push({ $sort: { created: -1 } })
 	queries.push({
-		$project: { _id: 0, title: 1, longTitle: 1, tags: 1, coverImg: 1, gallery: 1, description: 1, nodes:  1}
+		$project: { _id: 0, title: 1, longTitle: 1, tags: 1, coverImg: 1, gallery: 1, description: 1, location: 1, nodes:  1}
 	})
 	return Post.aggregate(queries)
 }

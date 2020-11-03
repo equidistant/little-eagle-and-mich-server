@@ -26,6 +26,9 @@ const postSchema = new Schema({
       return Date.now()
     }
   },
+  location: {
+    type: String
+  },
   nodes: [{
     name: String,
     data: String
